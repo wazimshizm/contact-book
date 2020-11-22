@@ -54,6 +54,7 @@ $(function () {
         modal.modal('hide');
         $('.alert').remove();
         editForm.trigger('reset');
+        $('#InputID').val('')
     }
 
     search.on('keyup', function () {
