@@ -39,4 +39,9 @@
                 ]
             );
         }
+
+        public function delete(Request $request)
+        {
+            return Contact::whereId($request->get('id'))->delete();
+        }
     }

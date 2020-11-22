@@ -17,4 +17,5 @@
     Route::get('/', [ContactController::class, 'index']);
     Route::post('/search', [ContactController::class, 'search']);
     Route::post('/update', [ContactController::class, 'update']);
+    Route::delete('/delete', [ContactController::class, 'delete']);
 

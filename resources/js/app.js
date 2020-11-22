@@ -25,7 +25,8 @@ $(function () {
                             '</td><td>' + (row.mobile ?? '') +
                             '</td><td class="tw-hidden sm:tw-table-cell">' + (row.email ?? '') +
                             '</td><td class="tw-hidden md:tw-table-cell">' + (row.post_code ?? '') +
-                            '</td>')
+                            '</td><td><button class="delete_btn tw-rounded-full tw-h-6 tw-w-6 tw-bg-red-500 tw-text-white" data-id="' + row.id +
+                            '">X</button></td>')
                         .on('click', function () {
                             reset_form();
                             row = $(this).data('info');
@@ -39,7 +40,13 @@ $(function () {
                         })
                     tbody.append(tr)
                 })
-                tbody.find('tr')
+                $('.delete_btn').on('click', function(e){
+                    e.stopPropagation();
+                    axios.delete('/delete', {data:{id:$(this).data('id')}})
+                        .then(function (response) {
+                        $('#search').trigger('keyup')
+                    })
+                })
             })
     }
 
@@ -83,4 +90,6 @@ $(function () {
             })
         });
     })
+
+
 })
